@@ -53,8 +53,11 @@ function Cloud({ count = 4, radius = 20, hashtags })
             // Taken from https://discourse.threejs.org/t/can-i-place-obects-on-a-sphere-surface-evenly/4773/6
             for (let j = 0; j < count; j++)
             {
-                temp.push([new THREE.Vector3().setFromSpherical(spherical.set(radius, phiSpan * i, thetaSpan * j)), hashtags[hashtagIterator].text])
-                hashtagIterator++;
+                if (hashtags[hashtagIterator] !== undefined)
+                {
+                    temp.push([new THREE.Vector3().setFromSpherical(spherical.set(radius, phiSpan * i, thetaSpan * j)), hashtags[hashtagIterator].text])
+                    hashtagIterator++;
+                }
             }
         }
         return temp

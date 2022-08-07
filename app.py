@@ -29,8 +29,9 @@ Client = tweepy.Client(
 def get_tweets(text,number):
     number = int(number)
     number = number if number < 100 else 100
+    number = number if number > 10 else 10 
     tweets = Client.search_recent_tweets(
-        query=f"{text} -is:retweet -is:reply lang:en", max_results=number)
+        query=f"{text} -is:retweet -is:reply lang:en", max_results=number,tweet_fields=['public_metrics','created_at'])
     return tweets.data
 
 # API endpoints
@@ -40,12 +41,12 @@ def serve(path):
     return send_from_directory(app.static_folder, 'index.html')
 
 @app.errorhandler(404)
-def page_not_found():
+def page_not_found(e):
     return send_from_directory(app.static_folder, 'index.html')
 
 @app.route('/predict/<number>/<text>')
-def predict(number,text):
-
+def predict(number=None,text=None):
+    
     # get tweets
     tweets = get_tweets(text,number=number)
 
@@ -59,12 +60,19 @@ def predict(number,text):
     # get predictions
     predictions = []
     for tweet in tweets_text:
+        index = tweets_text.index(tweet)
         sequence = tokenizer.texts_to_sequences([tweet])
         padded = keras.preprocessing.sequence.pad_sequences(
             sequence, maxlen=170)
         prediction = model.predict(padded)
         append_string = 'postive' if prediction[0][0] > 0.5 else 'negative'
-        predictions.append({"tweet": tweet, "prediction": append_string, "hashtags": tweets_hashtags[tweets_text.index(tweet)]})
+        predictions.append({
+            "public_metrics": tweets[index]['public_metrics'],
+            "created_at": str(tweets[index]['created_at']),
+            "tweet": tweets[index]['text'],
+            "processed_tweet": tweet,
+            "prediction": append_string,
+            "hashtags": tweets_hashtags[tweets_text.index(tweet)]})
     # return predictions
     return Response(json.dumps(predictions), mimetype='application/json')
 
@@ -138,8 +146,7 @@ RE_PATTERNS = {
     " must not ": ["mustn't"],
     " need not ": ["needn't"],
     " ought not ": ["oughtn't"],
-    " shall not ": ["shan't"],
-    " shall not ": ["sha'n't"],
+    " shall not ": ["shan't","sha'n't"],
     " she would ": ["she'd"],
     " she will ": ["she'll"],
     " she is ": ["she's"],

@@ -1,24 +1,28 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
-import CssBaseline from '@mui/material/CssBaseline';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
-import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { Link, useParams } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChartLine, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faTwitter } from '@fortawesome/free-brands-svg-icons'
+import Logo from '../assets/logo1.png'
 
 const drawerWidth = 240;
 
 export default function PermanentDrawerLeft()
 {
     const { query } = useParams();
-    return (
+    return (<>
+        <div className='Logo'>
+            <img src={Logo} alt='logo'></img>
+            <span>Little Birdy</span>
+        </div>
+
         <Box sx={{ display: 'flex' }}>
             <Drawer
                 sx={{
@@ -39,7 +43,18 @@ export default function PermanentDrawerLeft()
                 anchor="left"
             >
                 <List>
-                    {[['Search another query', ``], ['Dashboard', query], ['Tweets', `${query}/tweets`], ['TensorBoard', 'tensorboard']].map((text, index) => (
+                    {[['Search another query',
+                        ``,
+                        <FontAwesomeIcon icon={faMagnifyingGlass} className='nav-icon' />
+                    ],
+                    ['Dashboard',
+                        query,
+                        <FontAwesomeIcon icon={faChartLine} className='nav-icon' />
+                    ],
+                    ['Tweets',
+                        `${query}/tweets`,
+                        <FontAwesomeIcon icon={faTwitter} className='nav-icon' />
+                    ]].map((text, index) => (
                         <ListItem key={text} disablePadding>
                             <ListItemButton component={Link} to={`/${text[1]}`}
                                 sx={{
@@ -49,8 +64,7 @@ export default function PermanentDrawerLeft()
                                     },
                                 }}
                             >
-                                {/* <ListItemIcon>
-                                </ListItemIcon> */}
+                                {text[2]}
                                 <ListItemText primary={text[0]} />
                             </ListItemButton>
                         </ListItem>
@@ -58,5 +72,5 @@ export default function PermanentDrawerLeft()
                 </List>
             </Drawer>
         </Box>
-    );
+    </>);
 }

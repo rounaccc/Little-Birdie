@@ -27,7 +27,7 @@ export default function Home()
         <div className='home-container'>
             <div className='home-header'>
                 <img src={logo} alt='logo' />
-                <h1>RealTime Twitter Sentiment Analysis</h1>
+                <h1>Little Birdy</h1>
             </div>
             <Box
                 component="form"

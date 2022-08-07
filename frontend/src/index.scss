@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap');
+
 body {
 	margin: 0;
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,6 +7,28 @@ body {
 		sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+}
+
+.Logo {
+	display: block;
+	position: absolute;
+	z-index: 9999;
+	width: 10%;
+	padding: 1rem;
+	height: fit-content;
+
+	img {
+		width: 100%;
+		height: auto;
+	}
+
+	span {
+		display: block;
+		width: 100%;
+		color: white;
+		font-family: 'Oswald', sans-serif;
+		text-align: center;
+	}
 }
 
 ::-webkit-scrollbar {
@@ -20,6 +44,7 @@ body {
 ::-webkit-scrollbar-thumb {
 	background-color: lightgray;
 	border-radius: 10px;
+
 	&:hover {
 		background-color: rgb(179, 179, 179);
 	}
@@ -28,6 +53,11 @@ body {
 ::-webkit-scrollbar-track {
 	background-color: grey;
 	border-radius: 10px;
+}
+
+.nav-icon {
+	color: white;
+	margin-right: 0.5rem;
 }
 
 code {
@@ -73,6 +103,7 @@ code {
 	align-items: center;
 	width: 100vw;
 	height: 100vh;
+
 	.home-header {
 		display: block;
 		position: absolute;
@@ -80,14 +111,16 @@ code {
 		top: 15%;
 		left: 50%;
 		transform: translateX(-50%);
+
 		img {
 			width: 200px
 		}
+
 		h1 {
 			margin-top: 0.3rem;
 			color: white;
-			font-weight:600;
-			font-size: 1.2rem;
+			font-family: 'Oswald', sans-serif;
+			font-size: 2.5rem;
 		}
 	}
 }
@@ -145,16 +178,22 @@ code {
 
 			.dashboard-tweets-positive {
 				display: block;
-				background-color: green;
+				background-color: white;
+				border-radius: 10px;
+				//glow border
+				box-shadow: 0 0 0.4rem 0.4rem rgba(0, 255, 0, 0.5);
 				width: 100%;
-				height: 45%;
+				height: 40%;
 			}
 
 			.dashboard-tweets-negative {
 				display: block;
-				background-color: red;
+				background-color: white;
+				border-radius: 10px;
+				//glow border
+				box-shadow: 0 0 0.4rem 0.4rem rgba(255, 0, 0, 0.5);
 				width: 100%;
-				height: 45%;
+				height: 40%;
 			}
 		}
 	}
@@ -178,19 +217,20 @@ code {
 			width: 100%;
 			height: 75%;
 			border-radius: 3rem;
-			background-color: yellow;
+			background-color: #1a1a22;
 			transform: translateY(10px) translateX(10px);
 
 			.dashboard-tweets-wordcloud-positive {
 				display: block;
-				background-color: white;
+				background-color: transparent;
+				border-radius: 10px;
 				width: 100%;
 				height: 45%;
 			}
 
 			.dashboard-tweets-wordcloud-negative {
 				display: block;
-				background-color: white;
+				background-color: transparent;
 				width: 100%;
 				height: 45%;
 			}
@@ -208,7 +248,6 @@ code {
 			.bar-wrapper-positive {
 				border-radius: 0 1rem 1rem 0;
 				background-color: green;
-				
 			}
 
 			.bar-wrapper-negative {
@@ -258,7 +297,7 @@ code {
 		display: block;
 		background-color: white;
 		width: 95%;
-		height: 80%;
+		height: 90%;
 		padding: 0.5rem;
 		color: black;
 		box-sizing: border-box;
@@ -266,18 +305,71 @@ code {
 		p {
 			margin: 0;
 		}
+
+		.dashboard-tweets-tweet-footer {
+			position: absolute;
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
+			width: 90%;
+			bottom: 0;
+
+			.dashboard-tweets-tweet-footer-info {
+				p {
+					display: inline-block;
+					padding-right: 1rem;
+
+					.icon {
+						margin-left: 0.2rem;
+						width: 16px;
+						height: 16px;
+					}
+
+					.likes {
+						//twitter like color
+						color: #a7293e;
+					}
+
+					.retweets {
+						//twitter retweet color
+						color: #00ee47;
+					}
+
+					.replies {
+						//twitter reply color
+						color: #00acee;
+					}
+
+					.quotes {
+						//twitter quote color
+						color: #00acee;
+					}
+				}
+			}
+
+			.dashboard-tweets-tweet-footer-date {
+				p {
+					display: inline-block;
+				}
+			}
+		}
+
 	}
 }
 
 .dashboard-content {
 	overflow-y: auto;
 	padding: 0 1rem 1rem;
+
 	table {
 		border-collapse: collapse;
+
 		thead {
 			position: sticky !important;
 			top: 0;
 			height: 5rem;
+
 			th {
 				background-color: #25282c;
 				color: white;
@@ -288,10 +380,12 @@ code {
 				border-bottom: 1px solid white;
 			}
 		}
+
 		tbody {
 			tr {
 				color: white;
 				border-bottom: 1px solid white;
+
 				td {
 					width: 80%;
 					padding: 0.5rem;
@@ -299,6 +393,12 @@ code {
 					border-left: none;
 					border-right: 0px;
 					margin: 0;
+					text-align: center;
+
+					&:nth-child(1) {
+						text-align: start;
+					}
+
 					&:nth-child(2) {
 						width: 20%;
 						text-align: center;
@@ -319,7 +419,14 @@ code {
 
 svg {
 	g {
-		width: 100px;
 		height: 100%;
+		width: 100%;
 	}
+}
+
+.horizontal-line {
+	width: 90%;
+	height: 1px;
+	background-color: white;
+	margin: 0 auto;
 }

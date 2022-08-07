@@ -1,6 +1,7 @@
 import React from 'react';
 import { useOutletContext } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import Moment from 'react-moment';
 
 export default function Tweets()
 {
@@ -20,6 +21,8 @@ export default function Tweets()
                     <thead>
                         <tr>
                             <th>Original Tweet</th>
+                            <th>Date</th>
+                            <th>Likes</th>
                             <th>Prediction</th>
                         </tr>
                     </thead>
@@ -29,6 +32,8 @@ export default function Tweets()
                             return (
                                 <tr key={index}>
                                     <td>{tweet.tweet}</td>
+                                    <td><Moment fromNow>{tweet['created_at']}</Moment></td>
+                                    <td>{tweet['public_metrics']['like_count']}</td>
                                     <td
                                         className={`${tweet.prediction === 'postive' ? 'color-positive' : 'color-negative'}`}
                                     >{tweet.prediction}</td>
