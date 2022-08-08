@@ -6,6 +6,6 @@ https://user-images.githubusercontent.com/85012501/183479058-755872f3-ea45-44d7-
 
 ## Upcoming Features
 - Stopwords removal
-- UI designing\
+- UI designing
 - Deploy it on AWS 
 
