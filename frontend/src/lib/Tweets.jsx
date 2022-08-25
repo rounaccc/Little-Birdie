@@ -1,11 +1,9 @@
 import React from 'react';
-import { useOutletContext } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Moment from 'react-moment';
 
-export default function Tweets()
+export default function Tweets({tweetsData})
 {
-    const tweetsData = useOutletContext();
 
     return (<>
         <motion.div

@@ -4,9 +4,8 @@ import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import { Link, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChartLine, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { faTwitter } from '@fortawesome/free-brands-svg-icons'
@@ -14,9 +13,25 @@ import Logo from '../assets/logo1.png'
 
 const drawerWidth = 240;
 
-export default function PermanentDrawerLeft()
+export default function PermanentDrawerLeft({setTweetsOrDashboard})
 {
-    const { query } = useParams();
+    const navigate = useNavigate();
+    function handleClick(param)
+    {
+        if (param === 'Tweets')
+        {
+            setTweetsOrDashboard('Tweets');    
+        }
+        else if (param === 'Dashboard')
+        {
+            setTweetsOrDashboard('Dashboard')
+        }
+        else if (param === 'Query')
+        {
+            navigate('/');
+        }
+    }
+
     return (<>
         <div className='Logo'>
             <img src={Logo} alt='logo'></img>
@@ -44,19 +59,20 @@ export default function PermanentDrawerLeft()
             >
                 <List>
                     {[['Search another query',
-                        ``,
+                        'Query',
                         <FontAwesomeIcon icon={faMagnifyingGlass} className='nav-icon' />
                     ],
                     ['Dashboard',
-                        query,
+                        'Dashboard',
                         <FontAwesomeIcon icon={faChartLine} className='nav-icon' />
                     ],
                     ['Tweets',
-                        `${query}/tweets`,
+                        'Tweets',
                         <FontAwesomeIcon icon={faTwitter} className='nav-icon' />
-                    ]].map((text, index) => (
+                    ]].map((text) => (
                         <ListItem key={text} disablePadding>
-                            <ListItemButton component={Link} to={`/${text[1]}`}
+                            <ListItemButton
+                                onClick={() => handleClick(text[1])}
                                 sx={{
                                     borderRadius: '20px',
                                     '&:hover': {

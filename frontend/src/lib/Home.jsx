@@ -4,10 +4,13 @@ import { loadFull } from "tsparticles";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import logo from '../assets/logo1.png';
+import Button from '@mui/material/Button';
+import { useNavigate } from 'react-router-dom';
+
 
 export default function Home()
 {
-
+    const navigate = useNavigate();
     const searchRef = useRef();
     const particlesInit = async (main) =>
     {
@@ -55,6 +58,13 @@ export default function Home()
                     }}
                 />
             </Box>
+            <Button
+                onClick={() =>
+                {
+                    navigate(`/${searchRef.current.value}`)
+                }}
+                variant='contained'>Search Query
+            </Button>
         </div>
         <div className='particles-wrapper'>
             <Particles

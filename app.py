@@ -9,6 +9,8 @@ from tensorflow import keras
 from tensorflow.keras.models import load_model
 import json
 import re
+tf.get_logger().setLevel('ERROR')
+
 
 
 # Flask app
