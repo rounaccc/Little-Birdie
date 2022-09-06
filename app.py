@@ -10,6 +10,7 @@ from tensorflow.keras.models import load_model
 import json
 import re
 tf.get_logger().setLevel('ERROR')
+from os import environ
 
 
 
@@ -359,3 +360,7 @@ RE_PATTERNS = {
     ' should ': ['shoulda'],
     " aint ": ["am not"],
 }
+
+
+if __name__ == "__main__":
+    app.run(debug = False, host = '0.0.0.0', port=environ.get("PORT", 3000))
