@@ -10,7 +10,7 @@
 
 ### You can also checkout this quick demo
 
-https://user-images.githubusercontent.com/85012501/189414980-60c7db3b-12a1-4d06-b4a6-c726816e2726.mp4
+https://github.com/rounaccc/Little-Birdie/assets/85012501/09e3461b-d04c-4ef6-8f6f-7935550128a8
 
 ## Dataset and Pre-Processing
 
