@@ -15,7 +15,7 @@ https://github.com/rounaccc/Little-Birdie/assets/85012501/09e3461b-d04c-4ef6-8f6
 ## Dataset and Pre-Processing
 
 `Sentiment140 dataset with 1.6 million tweets` was used for developing the model which was customly preprocessed to a very highh standards.
-- Click [here](https://www.kaggle.com/datasets/kazanova/sentiment1400) to get the dataset.
+- Click [here](https://www.kaggle.com/datasets/kazanova/sentiment140) to get the dataset.
 ### Pre-processing steps
 - ~5k null values were removed
 - We tried to remove even the fine grained spelling error, unexpected characters and more...
