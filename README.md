@@ -55,4 +55,3 @@ https://github.com/rounaccc/Little-Birdie/assets/85012501/09e3461b-d04c-4ef6-8f6
 
 ![0bab4f21-13e1-4851-aeb1-4999be082cf4](https://user-images.githubusercontent.com/85012501/189542621-aaa78832-d078-437c-950d-06fe9fbe73df.jpeg)
 
-## Key challenges
